@@ -1,0 +1,34 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>{{ fruit.name }}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content class="ion-padding">
+  <app-loading-feedback [state]="state" (reload)="reloadFruit()">
+    <div *ngIf="fruit.id">
+      <ion-grid>
+          <ion-row>
+            <ion-col size="3">
+              <img src="assets/images/fruits/{{ fruit.image }}"/>
+            </ion-col>
+          </ion-row>  
+        </ion-grid>
+    
+      <form [formGroup]="form" (submit)="submitForm()">
+        <ion-item>
+          <ion-label>Descripcion</ion-label>
+          <ion-textarea formControlName="description"></ion-textarea>
+        </ion-item>
+        <div class="ion-margin ion-text-right">
+            <ion-button type="submit" [disabled]="form.invalid || sendForm">Submit</ion-button>
+        </div>
+      </form>
+    </div>
+  </app-loading-feedback>
+</ion-content>
+  

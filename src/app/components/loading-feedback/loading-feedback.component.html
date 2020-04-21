@@ -1,0 +1,16 @@
+<div *ngIf="state === 'loading'" class="ion-padding ion-text-center">
+  <h1>Loading...</h1>
+  <ion-spinner 
+    name="crescent"
+  ></ion-spinner>
+</div>
+
+<div *ngIf="state === 'loaded'" >
+  <ng-content></ng-content>
+</div>
+
+<div *ngIf="state === 'error'" class="ion-padding ion-text-center">
+  <h1>Error al cargar</h1>
+  <ion-button color="primary" (click)="clickReload()">Reload</ion-button>
+</div>
+

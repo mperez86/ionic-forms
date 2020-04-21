@@ -1,0 +1,37 @@
+<ion-header [translucent]="true">
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Fruit List</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <app-loading-feedback [state]="state" (reload)="reloadFruits()">
+    <app-expandable-content 
+      *ngFor="let fruit of fruits; let i = index"
+      [title]="fruit.name"
+    >
+    <ion-grid>
+      <ion-row>
+        <ion-col size="3">
+          <img src="assets/images/fruits/{{ fruit.image }}"/>
+        </ion-col>
+        <ion-col>
+          <h1>{{ fruit.name }}</h1>
+          <p>{{ fruit.description }}</p>
+          <a *ngIf="fruit.link" [href]="fruit.link" target="_blank">More info</a>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col size="2">
+          <ion-button color="primary" [routerLink]="fruit.id">
+            Details
+          </ion-button>
+        </ion-col>
+      </ion-row>
+      </ion-grid>
+    </app-expandable-content>
+  </app-loading-feedback>
+</ion-content>

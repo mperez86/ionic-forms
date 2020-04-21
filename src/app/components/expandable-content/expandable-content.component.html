@@ -1,0 +1,17 @@
+<ion-card>
+  <ion-row>
+    <ion-col size="1">
+      <ion-button (click)="toggle()">{{ symbol }}</ion-button>
+    </ion-col>
+    <ion-col text-left>
+      <ion-title style="padding-top: 15px !important;">{{ title }}</ion-title>
+    </ion-col>
+  </ion-row>
+  <ion-row>
+    <ion-col text-justify>
+      <p [hidden]=showText>
+        <ng-content></ng-content>
+      </p>
+    </ion-col>
+  </ion-row>
+</ion-card>
